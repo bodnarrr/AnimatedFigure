@@ -9,7 +9,5 @@
 import UIKit
 
 protocol AnimatedFigure: UIView {
-    typealias PhaseOperation = () -> Void
-    
     func operation(forPhase phase: AnimationPhase) -> PhaseOperation
 }

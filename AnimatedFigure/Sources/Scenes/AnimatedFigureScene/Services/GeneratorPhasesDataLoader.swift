@@ -25,8 +25,18 @@ class GeneratorPhasesDataLoader: PhasesDataLoader {
             "duration": 7,
             "color": "#FFFF00"
         ]
+        let phaseFour: [String: Any] = [
+            "type": "inhale",
+            "duration": 4,
+            "color": "#FF00FF"
+        ]
+        let phaseFive: [String: Any] = [
+            "type": "exhale",
+            "duration": 2,
+            "color": "#A00F1F"
+        ]
         
-        let generatedPhases = [phaseOne, phaseTwo, phaseThree]
+        let generatedPhases = [phaseOne, phaseTwo, phaseThree, phaseFour, phaseFive]
         guard let phasesData = try? JSONSerialization.data(withJSONObject: generatedPhases, options: []) else {
             print("Generated phases to JSON converting error!")
             return

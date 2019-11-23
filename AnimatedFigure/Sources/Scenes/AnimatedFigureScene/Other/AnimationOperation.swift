@@ -8,17 +8,19 @@
 
 import UIKit
 
-class AnimationOperation: AsyncOperation {
+class AnimationOperation: PhaseOperation {
     
     // MARK: - Properties
     private var completed: () -> Void = { }
     private let onStart: () -> Void
     private let animation: () -> Void
+    private let duration: TimeInterval
     
     // MARK: - Init
-    init(startWith: @escaping () -> Void, animation: @escaping () -> Void) {
+    init(startWith: @escaping () -> Void, animation: @escaping () -> Void, duration: TimeInterval) {
         self.onStart = startWith
         self.animation = animation
+        self.duration = duration
     }
     
     // MARK: - Public Methods
@@ -31,7 +33,7 @@ class AnimationOperation: AsyncOperation {
     
     func execute() {
         onStart()
-        UIView.animate(withDuration: 1.0, animations: { [weak self] in
+        UIView.animate(withDuration: duration, animations: { [weak self] in
             self?.animation()
         }, completion: { _ in
             self.completed()

@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - AsyncOperationProtocol
-protocol AsyncOperation {
+protocol PhaseOperation {
     func onCompleted(_ completed: @escaping () -> Void) -> Self
     func execute()
 }
@@ -19,11 +19,11 @@ class ChainedOperationsManager {
     
     // MARK: - Properties
     var completion: (() -> Void) = { }
-    private var chain = [AsyncOperation]()
+    private var chain = [PhaseOperation]()
     
     // MARK: - Public Methods
     @discardableResult
-    func addOperation(operation: AsyncOperation) -> Self {
+    func addOperation(operation: PhaseOperation) -> Self {
         chain.append(operation)
         
         return self

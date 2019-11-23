@@ -25,7 +25,26 @@ class AnimatedSquare: UIView, AnimatedFigure {
     
     // MARK: - AnimatedFigure
     func operation(forPhase phase: AnimationPhase) -> PhaseOperation {
-        return { }
+        let onStart: () -> Void = { [weak self] in
+            self?.backgroundColor = phase.color
+        }
+        
+        let animation: () -> Void
+        switch phase.type {
+        case .inhale:
+            animation = { [weak self] in
+                self?.transform = CGAffineTransform(scaleX: 2, y: 2)
+            }
+        case .exhale:
+            animation = { [weak self] in
+                self?.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            }
+        case .hold:
+            animation = { }
+        }
+        let phaseOperation = AnimationOperation(startWith: onStart, animation: animation, duration: phase.duration)
+        
+        return phaseOperation
     }
     
 }

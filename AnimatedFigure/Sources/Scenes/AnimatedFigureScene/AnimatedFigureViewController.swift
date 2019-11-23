@@ -79,25 +79,15 @@ class AnimatedFigureViewController: ViewController {
     }
     
     @objc private func animateFigure() {
-        let firstOperation = AnimationOperation(startWith: {
-            print("on start 1")
-        }, animation: { [weak self] in
-            self?.animatedFigureView?.transform = CGAffineTransform(scaleX: 2, y: 2)
-        })
-        let secondOperation = AnimationOperation(startWith: {
-            print("on start 2")
-        }, animation: { [weak self] in
-            self?.animatedFigureView?.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-        })
+        model.animationPhases
+            .compactMap { [weak self] (phase) in
+            self?.animatedFigureView?.operation(forPhase: phase)
+            }
+            .forEach { [weak self] (operation) in
+                self?.operationManager.addOperation(operation: operation)
+            }
         
-        [firstOperation, secondOperation].forEach {
-            operationManager.addOperation(operation: $0)
-        }
-        operationManager.onCompletion {
-            print("finished all tasks")
-        }
-        .start()
-        
+        operationManager.start()
         
     }
 
