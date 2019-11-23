@@ -13,6 +13,7 @@ class AnimatedFigureModel {
     // MARK: - Properties
     private let phasesDataLoader: PhasesDataLoader
     var animationPhases: [AnimationPhase] = []
+    var totalPhasesTime: Int?
     
     // MARK: - Init
     init(phasesDataLoader: PhasesDataLoader) {
@@ -23,7 +24,14 @@ class AnimatedFigureModel {
     func loadAnimationPhases(withCompletionHandled completionHandler: @escaping () -> Void) {
         phasesDataLoader.loadAnimationPhases { [weak self] (phases) in
             self?.animationPhases = phases
+            self?.totalPhasesTime = phases.reduce(0, { (time, phase) -> Int in
+                time + Int(phase.duration)
+            })
             completionHandler()
         }
+    }
+    
+    func updateTotalTime() {
+        totalPhasesTime? -= 1
     }
 }
