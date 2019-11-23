@@ -16,7 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow()
-        let animatedFigureViewController = AnimatedFigureViewController()
+        
+        let dataLoader = GeneratorPhasesDataLoader()
+        let model = AnimatedFigureModel(phasesDataLoader: dataLoader)
+        let animatedFigureViewController = AnimatedFigureViewController(withModel: model)
         window?.rootViewController = animatedFigureViewController
         window?.makeKeyAndVisible()
         

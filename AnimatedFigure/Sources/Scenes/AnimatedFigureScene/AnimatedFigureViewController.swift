@@ -9,9 +9,24 @@
 import UIKit
 
 class AnimatedFigureViewController: ViewController {
+    
+    // MARK: - Properties
+    let model: AnimatedFigureModel
 
-    override func prepare() {
-        view.backgroundColor = .red
+    // MARK: - Init
+    init(withModel model: AnimatedFigureModel) {
+        self.model = model
+        super.init()
     }
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented. Class is designed to be used with xib.")
+    }
+    
+    // MARK: - Prepare
+    override func prepare() {
+        view.backgroundColor = .blue
+        print("~~~> Controller with model presented")
+    }
+    
 }
