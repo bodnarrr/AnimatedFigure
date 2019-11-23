@@ -23,18 +23,9 @@ class AnimatedSquare: UIView, AnimatedFigure {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: -
-    func exhale() -> SizeChangingOperation {
-        return { print("exhale") }
+    // MARK: - AnimatedFigure
+    func operation(forPhase phase: AnimationPhase) -> PhaseOperation {
+        return { }
     }
-    
-    func inhale() -> SizeChangingOperation {
-        return { print("inhale") }
-    }
-    
-    func hold() -> SizeChangingOperation {
-        return { print("hold") }
-    }
-    
     
 }

@@ -9,12 +9,14 @@
 import UIKit
 
 class AnimatedFigureViewController: ViewController {
+    typealias PhaseOperation = () -> Void
     
     // MARK: - Outlets
     @IBOutlet weak var remainingTimeLabel: UILabel!
     
     // MARK: - Properties
     let model: AnimatedFigureModel
+    let operationManager = ChainedOperationsManager()
     var animatedFigureView: AnimatedFigure?
     var timer: Timer?
 
@@ -49,7 +51,7 @@ class AnimatedFigureViewController: ViewController {
         let square = AnimatedSquare(withMaxSize: CGFloat(maxFigureSize))
         view.addSubview(square)
         
-        square.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        square.frame = CGRect(x: 100, y: 400, width: 100, height: 100)
         square.backgroundColor = .lightGray
         animatedFigureView = square
     }
@@ -57,6 +59,7 @@ class AnimatedFigureViewController: ViewController {
     private func prepareAnimationData() {
         model.loadAnimationPhases { [weak self] in
             self?.prepareMainTimer()
+            self?.animateFigure()
         }
     }
     
@@ -73,6 +76,29 @@ class AnimatedFigureViewController: ViewController {
                 self?.remainingTimeLabel.text = "Remaining\n" + remainingTime.timeString
             }
         })
+    }
+    
+    @objc private func animateFigure() {
+        let firstOperation = AnimationOperation(startWith: {
+            print("on start 1")
+        }, animation: { [weak self] in
+            self?.animatedFigureView?.transform = CGAffineTransform(scaleX: 2, y: 2)
+        })
+        let secondOperation = AnimationOperation(startWith: {
+            print("on start 2")
+        }, animation: { [weak self] in
+            self?.animatedFigureView?.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        })
+        
+        [firstOperation, secondOperation].forEach {
+            operationManager.addOperation(operation: $0)
+        }
+        operationManager.onCompletion {
+            print("finished all tasks")
+        }
+        .start()
+        
+        
     }
 
 }

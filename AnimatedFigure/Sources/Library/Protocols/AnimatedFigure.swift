@@ -9,11 +9,7 @@
 import UIKit
 
 protocol AnimatedFigure: UIView {
-    typealias SizeChangingOperation = () -> Void
+    typealias PhaseOperation = () -> Void
     
-    var maxSize: CGFloat { get }
-    
-    func exhale() -> SizeChangingOperation
-    func inhale() -> SizeChangingOperation
-    func hold() -> SizeChangingOperation
+    func operation(forPhase phase: AnimationPhase) -> PhaseOperation
 }

@@ -20,6 +20,8 @@
 		B54AC9C523893E6C00705DCD /* AnimatedFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9C423893E6C00705DCD /* AnimatedFigure.swift */; };
 		B54AC9C72389401100705DCD /* AnimatedSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9C62389401100705DCD /* AnimatedSquare.swift */; };
 		B54AC9C92389556400705DCD /* Int+TimeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9C82389556400705DCD /* Int+TimeString.swift */; };
+		B54AC9CB238997C100705DCD /* ChainedOperationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9CA238997C100705DCD /* ChainedOperationsManager.swift */; };
+		B54AC9CE2389AA6700705DCD /* AnimationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9CD2389AA6700705DCD /* AnimationOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		B54AC9C423893E6C00705DCD /* AnimatedFigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedFigure.swift; sourceTree = "<group>"; };
 		B54AC9C62389401100705DCD /* AnimatedSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedSquare.swift; sourceTree = "<group>"; };
 		B54AC9C82389556400705DCD /* Int+TimeString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+TimeString.swift"; sourceTree = "<group>"; };
+		B54AC9CA238997C100705DCD /* ChainedOperationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainedOperationsManager.swift; sourceTree = "<group>"; };
+		B54AC9CD2389AA6700705DCD /* AnimationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,7 @@
 				B54AC9C62389401100705DCD /* AnimatedSquare.swift */,
 				B54AC9B923892FFA00705DCD /* Models */,
 				B54AC9BE2389341700705DCD /* Services */,
+				B54AC9CC2389AA1200705DCD /* Other */,
 			);
 			path = AnimatedFigureScene;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				B54AC9BF238934FD00705DCD /* GeneratorPhasesDataLoader.swift */,
+				B54AC9CA238997C100705DCD /* ChainedOperationsManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -166,6 +172,14 @@
 				B54AC9C82389556400705DCD /* Int+TimeString.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B54AC9CC2389AA1200705DCD /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				B54AC9CD2389AA6700705DCD /* AnimationOperation.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,12 +252,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B54AC9CB238997C100705DCD /* ChainedOperationsManager.swift in Sources */,
 				B54AC9C0238934FD00705DCD /* GeneratorPhasesDataLoader.swift in Sources */,
 				B54AC9C523893E6C00705DCD /* AnimatedFigure.swift in Sources */,
 				B54AC9C323893AAD00705DCD /* UIColor+HEX.swift in Sources */,
 				B54AC9C92389556400705DCD /* Int+TimeString.swift in Sources */,
 				B533391823887DDD000FB928 /* ViewController.swift in Sources */,
 				B53338F823887ABA000FB928 /* AppDelegate.swift in Sources */,
+				B54AC9CE2389AA6700705DCD /* AnimationOperation.swift in Sources */,
 				B54AC9C72389401100705DCD /* AnimatedSquare.swift in Sources */,
 				B54AC9B823892FCE00705DCD /* PhasesDataLoader.swift in Sources */,
 				B54AC9BB2389301600705DCD /* AnimatedFigureModel.swift in Sources */,

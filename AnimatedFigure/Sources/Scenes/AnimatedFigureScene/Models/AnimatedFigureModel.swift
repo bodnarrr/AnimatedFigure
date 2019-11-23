@@ -13,7 +13,7 @@ class AnimatedFigureModel {
     // MARK: - Properties
     private let phasesDataLoader: PhasesDataLoader
     var animationPhases: [AnimationPhase] = []
-    var totalPhasesTime: Int?
+    var totalPhasesTime: Int = 0
     
     // MARK: - Init
     init(phasesDataLoader: PhasesDataLoader) {
@@ -32,6 +32,6 @@ class AnimatedFigureModel {
     }
     
     func updateTotalTime() {
-        totalPhasesTime? -= 1
+        totalPhasesTime -= 1
     }
 }
