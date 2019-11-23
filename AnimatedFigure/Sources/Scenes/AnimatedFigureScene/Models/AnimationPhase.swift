@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum ColorDecodingError: Error {
+    case incorrectHex(String)
+}
+
 enum AnimationPhaseType: String, Codable {
     case inhale
     case exhale
@@ -37,8 +41,10 @@ struct AnimationPhase: Codable {
         
         // TODO: Color from string init
         let colorHexString = try container.decode(String.self, forKey: .color)
-        print(colorHexString)
-        color = .red
+        guard let color = UIColor(hexString: colorHexString) else {
+            throw ColorDecodingError.incorrectHex("Incorrect color format")
+        }
+        self.color = color
     }
     
     // MARK: - Encoding
@@ -47,8 +53,6 @@ struct AnimationPhase: Codable {
         
         try container.encode(type, forKey: .type)
         try container.encode(duration, forKey: .duration)
-        
-        // TODO: Color to hex string convertation
-        try container.encode("COLORHEX", forKey: .color)
+        try container.encode(color.hexString, forKey: .color)
     }
 }

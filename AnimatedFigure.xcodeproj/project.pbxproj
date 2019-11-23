@@ -16,6 +16,7 @@
 		B54AC9BB2389301600705DCD /* AnimatedFigureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9BA2389301600705DCD /* AnimatedFigureModel.swift */; };
 		B54AC9BD2389308900705DCD /* AnimationPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9BC2389308900705DCD /* AnimationPhase.swift */; };
 		B54AC9C0238934FD00705DCD /* GeneratorPhasesDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9BF238934FD00705DCD /* GeneratorPhasesDataLoader.swift */; };
+		B54AC9C323893AAD00705DCD /* UIColor+HEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9C223893AAD00705DCD /* UIColor+HEX.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		B54AC9BA2389301600705DCD /* AnimatedFigureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedFigureModel.swift; sourceTree = "<group>"; };
 		B54AC9BC2389308900705DCD /* AnimationPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationPhase.swift; sourceTree = "<group>"; };
 		B54AC9BF238934FD00705DCD /* GeneratorPhasesDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratorPhasesDataLoader.swift; sourceTree = "<group>"; };
+		B54AC9C223893AAD00705DCD /* UIColor+HEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HEX.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 		B54AC9B523892F9200705DCD /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				B54AC9C123893A9B00705DCD /* Extensions */,
 				B54AC9B623892F9D00705DCD /* Protocols */,
 			);
 			path = Library;
@@ -146,6 +149,14 @@
 				B54AC9BF238934FD00705DCD /* GeneratorPhasesDataLoader.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		B54AC9C123893A9B00705DCD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B54AC9C223893AAD00705DCD /* UIColor+HEX.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B54AC9C0238934FD00705DCD /* GeneratorPhasesDataLoader.swift in Sources */,
+				B54AC9C323893AAD00705DCD /* UIColor+HEX.swift in Sources */,
 				B533391823887DDD000FB928 /* ViewController.swift in Sources */,
 				B53338F823887ABA000FB928 /* AppDelegate.swift in Sources */,
 				B54AC9B823892FCE00705DCD /* PhasesDataLoader.swift in Sources */,

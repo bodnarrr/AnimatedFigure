@@ -25,8 +25,13 @@ class AnimatedFigureViewController: ViewController {
     
     // MARK: - Prepare
     override func prepare() {
-        view.backgroundColor = .blue
-        print("~~~> Controller with model presented")
+        model.loadAnimationPhases { [weak self] in
+            self?.model.animationPhases.forEach { (phase) in
+                DispatchQueue.main.asyncAfter(deadline: .now() + phase.duration) { [weak self] in
+                    self?.view.backgroundColor = phase.color
+                }
+            }
+        }
     }
     
 }
