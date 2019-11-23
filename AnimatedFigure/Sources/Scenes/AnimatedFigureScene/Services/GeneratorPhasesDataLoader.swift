@@ -22,8 +22,8 @@ class GeneratorPhasesDataLoader: PhasesDataLoader {
         ]
         let phaseThree: [String: Any] = [
             "type": "hold",
-            "duration": 7,
-            "color": "#FFFF00"
+            "duration": 2,
+            "color": "#4340C1"
         ]
         let phaseFour: [String: Any] = [
             "type": "inhale",

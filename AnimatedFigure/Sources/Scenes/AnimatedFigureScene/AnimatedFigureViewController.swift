@@ -48,10 +48,10 @@ class AnimatedFigureViewController: ViewController {
         let screenHeight = UIScreen.main.bounds.height
         let maxFigureSize = screenWidth < screenHeight ? screenWidth * 0.8 : screenHeight * 0.8
         
-        let square = AnimatedSquare(withMaxSize: CGFloat(maxFigureSize))
+        let square = AnimatedSquare()
         view.addSubview(square)
         
-        square.frame = CGRect(x: 100, y: 400, width: 100, height: 100)
+        square.frame = CGRect(x: 0, y: 0, width: maxFigureSize * 0.75, height: maxFigureSize * 0.75)
         square.backgroundColor = .lightGray
         animatedFigureView = square
     }
