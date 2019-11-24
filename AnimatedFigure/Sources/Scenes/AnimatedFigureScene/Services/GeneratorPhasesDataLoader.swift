@@ -12,27 +12,27 @@ class GeneratorPhasesDataLoader: PhasesDataLoader {
     func loadAnimationPhases(withCompletionHandler completionHandler: @escaping ([AnimationPhase]) -> Void) {
         let phaseOne: [String: Any] = [
             "type": "inhale",
-            "duration": 4,
+            "duration": 5,
             "color": "#FF00FF"
         ]
         let phaseTwo: [String: Any] = [
             "type": "exhale",
-            "duration": 2,
+            "duration": 4,
             "color": "#00FFFF"
         ]
         let phaseThree: [String: Any] = [
             "type": "hold",
-            "duration": 2,
+            "duration": 3,
             "color": "#4340C1"
         ]
         let phaseFour: [String: Any] = [
             "type": "inhale",
-            "duration": 4,
+            "duration": 2,
             "color": "#FF00FF"
         ]
         let phaseFive: [String: Any] = [
             "type": "exhale",
-            "duration": 2,
+            "duration": 1,
             "color": "#A00F1F"
         ]
         
