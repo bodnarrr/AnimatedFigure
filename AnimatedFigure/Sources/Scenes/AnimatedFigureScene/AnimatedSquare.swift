@@ -8,6 +8,12 @@
 
 import UIKit
 
+// MARK: - Square Constants
+fileprivate enum SquareConstants {
+    static let inhaleRatio: CGFloat = 100 / 75
+    static let exhaleRatio: CGFloat = 75 / 50
+}
+
 class AnimatedSquare: UIView, AnimatedFigure {
     
     // MARK: - Properties
@@ -42,12 +48,12 @@ class AnimatedSquare: UIView, AnimatedFigure {
         switch phase.type {
         case .inhale:
             let animation: () -> Void = { [weak self] in
-                self?.transform = CGAffineTransform(scaleX: 4 / 3, y: 4 / 3)
+                self?.transform = CGAffineTransform(scaleX: SquareConstants.inhaleRatio, y: SquareConstants.inhaleRatio)
             }
             phaseOperation = AnimationOperation(startWith: onStart, animation: animation, duration: phase.duration)
         case .exhale:
             let animation: () -> Void = { [weak self] in
-                self?.transform = CGAffineTransform(scaleX: 2 / 3, y: 2 / 3)
+                self?.transform = CGAffineTransform(scaleX: SquareConstants.exhaleRatio, y: SquareConstants.exhaleRatio)
             }
             phaseOperation = AnimationOperation(startWith: onStart, animation: animation, duration: phase.duration)
         case .hold:

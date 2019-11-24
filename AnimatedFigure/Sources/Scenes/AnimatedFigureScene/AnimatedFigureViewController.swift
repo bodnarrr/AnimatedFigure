@@ -8,8 +8,23 @@
 
 import UIKit
 
+// MARK: - Figure Constants
+fileprivate enum FigureConstants {
+    static let maxFigureToScreenRatio: CGFloat = 0.8
+    static let maxFigureSize: CGFloat = {
+        let screenWidth = UIScreen.main.bounds.width
+        let screenHeight = UIScreen.main.bounds.height
+        let size = screenWidth < screenHeight
+            ? screenWidth * FigureConstants.maxFigureToScreenRatio
+            : screenHeight * FigureConstants.maxFigureToScreenRatio
+        
+        return size
+    }()
+    static let defaultFigureRation: CGFloat = 0.75
+}
+
+// MARK: - Controller
 class AnimatedFigureViewController: ViewController {
-    typealias PhaseOperation = () -> Void
     
     // MARK: - Outlets
     @IBOutlet weak var remainingTimeLabel: UILabel!
@@ -46,12 +61,11 @@ class AnimatedFigureViewController: ViewController {
     }
     
     private func prepareFigure() {
-        let screenWidth = UIScreen.main.bounds.width
-        let screenHeight = UIScreen.main.bounds.height
-        let maxFigureSize = screenWidth < screenHeight ? screenWidth * 0.8 : screenHeight * 0.8
-        
         let square = AnimatedSquare()
-        square.frame = CGRect(x: 0, y: 0, width: maxFigureSize * 0.75, height: maxFigureSize * 0.75)
+        square.frame = CGRect(x: 0, y: 0,
+            width: FigureConstants.maxFigureSize * FigureConstants.defaultFigureRation,
+            height: FigureConstants.maxFigureSize * FigureConstants.defaultFigureRation
+        )
         square.backgroundColor = .lightGray
         square.delegate = self
         
