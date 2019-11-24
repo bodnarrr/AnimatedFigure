@@ -18,7 +18,7 @@ class AnimatedFigureViewController: ViewController {
     let model: AnimatedFigureModel
     let operationManager = ChainedOperationsManager()
     var animatedFigureView: AnimatedFigure?
-    var timer: Timer?
+    var phaseInfoLabel: UILabel?
 
     // MARK: - Init
     init(withModel model: AnimatedFigureModel) {
@@ -35,11 +35,13 @@ class AnimatedFigureViewController: ViewController {
         super.viewDidLayoutSubviews()
         
         animatedFigureView?.center = view.center
+        phaseInfoLabel?.center = view.center
     }
     
     // MARK: - Prepare
     override func prepare() {
         prepareFigure()
+        preparePhaseInfoLabel()
         prepareAnimationData()
     }
     
@@ -55,6 +57,17 @@ class AnimatedFigureViewController: ViewController {
         
         view.addSubview(square)
         animatedFigureView = square
+    }
+    
+    private func preparePhaseInfoLabel() {
+        let phaseInfoLabel = UILabel()
+        phaseInfoLabel.numberOfLines = 0
+        phaseInfoLabel.frame = CGRect(x: 0, y: 0, width: 90, height: 60)
+        phaseInfoLabel.text = "HELLO"
+        phaseInfoLabel.textAlignment = .center
+        view.addSubview(phaseInfoLabel)
+        
+        self.phaseInfoLabel = phaseInfoLabel
     }
     
     private func prepareAnimationData() {
@@ -102,6 +115,6 @@ class AnimatedFigureViewController: ViewController {
 
 extension AnimatedFigureViewController: AnimatedFigureDelegate {
     func animatedFigure(didUpdatePhase phase: AnimationPhaseType, withRemainingTime remainingTime: Int) {
-        print("Phase: \(phase.rawValue), time: \(remainingTime)")
+        phaseInfoLabel?.text = phase.rawValue.uppercased() + "\n" + remainingTime.timeString
     }
 }

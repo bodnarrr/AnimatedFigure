@@ -18,8 +18,12 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="297-5H-AeU">
-                    <rect key="frame" x="207" y="812" width="0.0" height="0.0"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FDSFSDFSD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="297-5H-AeU">
+                    <rect key="frame" x="164.5" y="801" width="85" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="85" id="Mmn-1h-F8i"/>
+                        <constraint firstAttribute="height" constant="45" id="X3B-cH-3B4"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -28,9 +32,31 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="297-5H-AeU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="SHT-Q0-njr"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="297-5H-AeU" secondAttribute="bottom" constant="50" id="qwb-tg-a5R"/>
+                <constraint firstItem="297-5H-AeU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="pkK-8X-nvg"/>
+                <constraint firstAttribute="bottom" secondItem="297-5H-AeU" secondAttribute="bottom" constant="50" id="qwb-tg-a5R"/>
+                <constraint firstAttribute="trailing" secondItem="297-5H-AeU" secondAttribute="trailing" constant="30" id="xEo-bK-kES"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="xEo-bK-kES"/>
+                    <exclude reference="SHT-Q0-njr"/>
+                    <exclude reference="pkK-8X-nvg"/>
+                    <exclude reference="qwb-tg-a5R"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=compact">
+                <mask key="constraints">
+                    <include reference="xEo-bK-kES"/>
+                    <include reference="pkK-8X-nvg"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular">
+                <mask key="constraints">
+                    <include reference="SHT-Q0-njr"/>
+                    <include reference="qwb-tg-a5R"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="139" y="142"/>
         </view>
     </objects>
