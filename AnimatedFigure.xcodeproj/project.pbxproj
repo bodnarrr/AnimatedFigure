@@ -23,6 +23,7 @@
 		B54AC9CB238997C100705DCD /* ChainedOperationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9CA238997C100705DCD /* ChainedOperationsManager.swift */; };
 		B54AC9CE2389AA6700705DCD /* AnimationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9CD2389AA6700705DCD /* AnimationOperation.swift */; };
 		B54AC9D02389B77D00705DCD /* HoldOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9CF2389B77D00705DCD /* HoldOperation.swift */; };
+		B54AC9D2238AC8E700705DCD /* PhaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9D1238AC8E700705DCD /* PhaseOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		B54AC9CA238997C100705DCD /* ChainedOperationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainedOperationsManager.swift; sourceTree = "<group>"; };
 		B54AC9CD2389AA6700705DCD /* AnimationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationOperation.swift; sourceTree = "<group>"; };
 		B54AC9CF2389B77D00705DCD /* HoldOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldOperation.swift; sourceTree = "<group>"; };
+		B54AC9D1238AC8E700705DCD /* PhaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			children = (
 				B54AC9B723892FCE00705DCD /* PhasesDataLoader.swift */,
 				B54AC9C423893E6C00705DCD /* AnimatedFigure.swift */,
+				B54AC9D1238AC8E700705DCD /* PhaseOperation.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				B54AC9B823892FCE00705DCD /* PhasesDataLoader.swift in Sources */,
 				B54AC9BB2389301600705DCD /* AnimatedFigureModel.swift in Sources */,
 				B54AC9BD2389308900705DCD /* AnimationPhase.swift in Sources */,
+				B54AC9D2238AC8E700705DCD /* PhaseOperation.swift in Sources */,
 				B533391423887D44000FB928 /* AnimatedFigureViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

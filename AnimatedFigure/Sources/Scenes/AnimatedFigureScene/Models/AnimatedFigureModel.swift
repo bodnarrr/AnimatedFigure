@@ -24,11 +24,14 @@ class AnimatedFigureModel {
     func loadAnimationPhases(withCompletionHandled completionHandler: @escaping () -> Void) {
         phasesDataLoader.loadAnimationPhases { [weak self] (phases) in
             self?.animationPhases = phases
-            self?.totalPhasesTime = phases.reduce(0, { (time, phase) -> Int in
-                time + Int(phase.duration)
-            })
             completionHandler()
         }
+    }
+    
+    func calcPhasesTime() {
+        totalPhasesTime = animationPhases.reduce(0, { (time, phase) -> Int in
+            time + Int(phase.duration)
+        })
     }
     
     func updateTotalTime() {

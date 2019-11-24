@@ -55,6 +55,10 @@ class AnimatedFigureViewController: ViewController {
         square.backgroundColor = .lightGray
         square.delegate = self
         
+        let tapRecognizer = UITapGestureRecognizer()
+        tapRecognizer.addTarget(self, action: #selector(breathe))
+        square.addGestureRecognizer(tapRecognizer)
+        
         view.addSubview(square)
         animatedFigureView = square
     }
@@ -63,7 +67,6 @@ class AnimatedFigureViewController: ViewController {
         let phaseInfoLabel = UILabel()
         phaseInfoLabel.numberOfLines = 0
         phaseInfoLabel.frame = CGRect(x: 0, y: 0, width: 90, height: 60)
-        phaseInfoLabel.text = "HELLO"
         phaseInfoLabel.textAlignment = .center
         view.addSubview(phaseInfoLabel)
         
@@ -72,13 +75,20 @@ class AnimatedFigureViewController: ViewController {
     
     private func prepareAnimationData() {
         model.loadAnimationPhases { [weak self] in
-            self?.prepareFigureAnimations()
-            self?.prepareTimeLabel()
-            self?.startBreathing()
+            self?.breathe()
         }
     }
     
     // MARK: - Private Methods
+    @objc private func breathe() {
+        guard operationManager.state != .executing else { return }
+        
+        model.calcPhasesTime()
+        prepareFigureAnimations()
+        prepareTimeLabel()
+        startBreathe()
+    }
+    
     private func prepareFigureAnimations() {
         model.animationPhases
             .compactMap { [weak self] (phase) in
@@ -90,10 +100,11 @@ class AnimatedFigureViewController: ViewController {
     }
     
     private func prepareTimeLabel() {
+        remainingTimeLabel.isHidden = false
         remainingTimeLabel.text = "Remaining\n" + model.totalPhasesTime.timeString
     }
     
-    private func startBreathing() {
+    private func startBreathe() {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] timer in
             self?.model.updateTotalTime()
             

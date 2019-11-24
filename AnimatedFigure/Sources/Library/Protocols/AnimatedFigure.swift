@@ -19,7 +19,7 @@ protocol AnimatedFigure: UIView {
 
 extension AnimatedFigure {
     func initialState() {
-        UIView.animate(withDuration: 0.5) { [weak self] in
+        UIView.animate(withDuration: 1.5) { [weak self] in
             self?.transform = CGAffineTransform(scaleX: 1, y: 1)
         }
     }

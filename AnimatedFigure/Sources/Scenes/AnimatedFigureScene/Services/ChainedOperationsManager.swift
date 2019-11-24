@@ -8,23 +8,24 @@
 
 import UIKit
 
-// MARK: - AsyncOperationProtocol
-protocol PhaseOperation {
-    func onCompleted(_ completed: @escaping () -> Void) -> Self
-    func execute()
+enum ChainedOperationsManagerState {
+    case executing
+    case ready
+    case empty
 }
 
-// MARK: - ChainedOperationsManager
 class ChainedOperationsManager {
     
     // MARK: - Properties
     var completion: (() -> Void) = { }
     private var chain = [PhaseOperation]()
+    private(set) var state: ChainedOperationsManagerState = .empty
     
     // MARK: - Public Methods
     @discardableResult
     func addOperation(operation: PhaseOperation) -> Self {
         chain.append(operation)
+        state = .ready
         
         return self
     }
@@ -37,12 +38,16 @@ class ChainedOperationsManager {
     }
     
     func start() {
+        guard state == .ready else { return }
+        
+        state = .executing
         executeChain()
     }
     
     // MARK: - Private Methods
     private func executeChain() {
         guard !chain.isEmpty else {
+            state = .empty
             completion()
             return
         }
