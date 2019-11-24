@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AnimatedFigureDelegate: class {
+    func animatedFigure(didUpdatePhase phase: AnimationPhaseType, withRemainingTime remainingTime: Int)
+}
+
 protocol AnimatedFigure: UIView {
     func operation(forPhase phase: AnimationPhase) -> PhaseOperation
 }

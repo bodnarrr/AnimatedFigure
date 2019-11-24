@@ -39,10 +39,12 @@ class GeneratorPhasesDataLoader: PhasesDataLoader {
         let generatedPhases = [phaseOne, phaseTwo, phaseThree, phaseFour, phaseFive]
         guard let phasesData = try? JSONSerialization.data(withJSONObject: generatedPhases, options: []) else {
             print("Generated phases to JSON converting error!")
+             completionHandler([])
             return
         }
         guard let phases = try? JSONDecoder().decode([AnimationPhase].self, from: phasesData) else {
             print("Decoding phases from JSON converting error!")
+            completionHandler([])
             return
         }
         

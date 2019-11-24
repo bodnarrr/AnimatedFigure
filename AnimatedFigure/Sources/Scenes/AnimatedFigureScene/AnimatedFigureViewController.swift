@@ -49,22 +49,38 @@ class AnimatedFigureViewController: ViewController {
         let maxFigureSize = screenWidth < screenHeight ? screenWidth * 0.8 : screenHeight * 0.8
         
         let square = AnimatedSquare()
-        view.addSubview(square)
-        
         square.frame = CGRect(x: 0, y: 0, width: maxFigureSize * 0.75, height: maxFigureSize * 0.75)
         square.backgroundColor = .lightGray
+        square.delegate = self
+        
+        view.addSubview(square)
         animatedFigureView = square
     }
     
     private func prepareAnimationData() {
         model.loadAnimationPhases { [weak self] in
-            self?.prepareMainTimer()
-            self?.animateFigure()
+            self?.prepareFigureAnimations()
+            self?.prepareTimeLabel()
+            self?.startBreathing()
         }
     }
     
     // MARK: - Private Methods
-    private func prepareMainTimer() {
+    private func prepareFigureAnimations() {
+        model.animationPhases
+            .compactMap { [weak self] (phase) in
+            self?.animatedFigureView?.operation(forPhase: phase)
+            }
+            .forEach { [weak self] (operation) in
+                self?.operationManager.addOperation(operation: operation)
+            }
+    }
+    
+    private func prepareTimeLabel() {
+        remainingTimeLabel.text = "Remaining\n" + model.totalPhasesTime.timeString
+    }
+    
+    private func startBreathing() {
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] timer in
             self?.model.updateTotalTime()
             
@@ -76,19 +92,16 @@ class AnimatedFigureViewController: ViewController {
                 self?.remainingTimeLabel.text = "Remaining\n" + remainingTime.timeString
             }
         })
-    }
-    
-    @objc private func animateFigure() {
-        model.animationPhases
-            .compactMap { [weak self] (phase) in
-            self?.animatedFigureView?.operation(forPhase: phase)
+        operationManager
+            .onCompletion {
+                print("~~~> Finished animations")
             }
-            .forEach { [weak self] (operation) in
-                self?.operationManager.addOperation(operation: operation)
-            }
-        
-        operationManager.start()
-        
+            .start()
     }
+}
 
+extension AnimatedFigureViewController: AnimatedFigureDelegate {
+    func animatedFigure(didUpdatePhase phase: AnimationPhaseType, withRemainingTime remainingTime: Int) {
+        print("Phase: \(phase.rawValue), time: \(remainingTime)")
+    }
 }
