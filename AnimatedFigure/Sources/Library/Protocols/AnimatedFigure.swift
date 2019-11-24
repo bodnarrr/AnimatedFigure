@@ -19,6 +19,7 @@ protocol AnimatedFigure: UIView {
 
 extension AnimatedFigure {
     func initialState() {
+        backgroundColor = .lightGray
         UIView.animate(withDuration: 1.5) { [weak self] in
             self?.transform = CGAffineTransform(scaleX: 1, y: 1)
         }

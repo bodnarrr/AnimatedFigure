@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
         
-        let dataLoader = GeneratorPhasesDataLoader()
+        let dataLoader = FilePhasesDataLoader()
         let model = AnimatedFigureModel(phasesDataLoader: dataLoader)
         let animatedFigureViewController = AnimatedFigureViewController(withModel: model)
         window?.rootViewController = animatedFigureViewController

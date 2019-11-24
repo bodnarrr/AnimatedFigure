@@ -24,6 +24,9 @@
 		B54AC9CE2389AA6700705DCD /* AnimationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9CD2389AA6700705DCD /* AnimationOperation.swift */; };
 		B54AC9D02389B77D00705DCD /* HoldOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9CF2389B77D00705DCD /* HoldOperation.swift */; };
 		B54AC9D2238AC8E700705DCD /* PhaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9D1238AC8E700705DCD /* PhaseOperation.swift */; };
+		B54AC9D4238AE06900705DCD /* Phases.json in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9D3238AE06900705DCD /* Phases.json */; };
+		B54AC9D6238AE09E00705DCD /* FilePhasesDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9D5238AE09E00705DCD /* FilePhasesDataLoader.swift */; };
+		B54AC9D7238AE4FC00705DCD /* Phases.json in Resources */ = {isa = PBXBuildFile; fileRef = B54AC9D3238AE06900705DCD /* Phases.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,8 @@
 		B54AC9CD2389AA6700705DCD /* AnimationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationOperation.swift; sourceTree = "<group>"; };
 		B54AC9CF2389B77D00705DCD /* HoldOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldOperation.swift; sourceTree = "<group>"; };
 		B54AC9D1238AC8E700705DCD /* PhaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseOperation.swift; sourceTree = "<group>"; };
+		B54AC9D3238AE06900705DCD /* Phases.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Phases.json; sourceTree = "<group>"; };
+		B54AC9D5238AE09E00705DCD /* FilePhasesDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePhasesDataLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +95,7 @@
 			children = (
 				B533390023887ABB000FB928 /* Assets.xcassets */,
 				B533390523887ABB000FB928 /* Info.plist */,
+				B54AC9D3238AE06900705DCD /* Phases.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -165,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				B54AC9BF238934FD00705DCD /* GeneratorPhasesDataLoader.swift */,
+				B54AC9D5238AE09E00705DCD /* FilePhasesDataLoader.swift */,
 				B54AC9CA238997C100705DCD /* ChainedOperationsManager.swift */,
 			);
 			path = Services;
@@ -246,6 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B54AC9D7238AE4FC00705DCD /* Phases.json in Resources */,
 				B533391523887D44000FB928 /* AnimatedFigureViewController.xib in Resources */,
 				B533390123887ABB000FB928 /* Assets.xcassets in Resources */,
 			);
@@ -265,10 +273,12 @@
 				B54AC9C92389556400705DCD /* Int+TimeString.swift in Sources */,
 				B533391823887DDD000FB928 /* ViewController.swift in Sources */,
 				B54AC9D02389B77D00705DCD /* HoldOperation.swift in Sources */,
+				B54AC9D6238AE09E00705DCD /* FilePhasesDataLoader.swift in Sources */,
 				B53338F823887ABA000FB928 /* AppDelegate.swift in Sources */,
 				B54AC9CE2389AA6700705DCD /* AnimationOperation.swift in Sources */,
 				B54AC9C72389401100705DCD /* AnimatedSquare.swift in Sources */,
 				B54AC9B823892FCE00705DCD /* PhasesDataLoader.swift in Sources */,
+				B54AC9D4238AE06900705DCD /* Phases.json in Sources */,
 				B54AC9BB2389301600705DCD /* AnimatedFigureModel.swift in Sources */,
 				B54AC9BD2389308900705DCD /* AnimationPhase.swift in Sources */,
 				B54AC9D2238AC8E700705DCD /* PhaseOperation.swift in Sources */,

@@ -85,6 +85,9 @@ class AnimatedFigureViewController: ViewController {
         
         model.calcPhasesTime()
         prepareFigureAnimations()
+        
+        guard operationManager.state == .ready else { return }
+        
         prepareTimeLabel()
         startBreathe()
     }
