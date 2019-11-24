@@ -11,7 +11,7 @@ import UIKit
 // MARK: - Square Constants
 fileprivate enum SquareConstants {
     static let inhaleRatio: CGFloat = 100 / 75
-    static let exhaleRatio: CGFloat = 75 / 50
+    static let exhaleRatio: CGFloat = 50 / 75
 }
 
 class AnimatedSquare: UIView, AnimatedFigure {
