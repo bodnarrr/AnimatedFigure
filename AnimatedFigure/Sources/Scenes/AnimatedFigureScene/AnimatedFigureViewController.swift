@@ -106,8 +106,9 @@ class AnimatedFigureViewController: ViewController {
             }
         })
         operationManager
-            .onCompletion {
-                print("~~~> Finished animations")
+            .onCompletion { [weak self] in
+                self?.animatedFigureView?.initialState()
+                self?.phaseInfoLabel?.text = "TAP TO\nBREATHE"
             }
             .start()
     }

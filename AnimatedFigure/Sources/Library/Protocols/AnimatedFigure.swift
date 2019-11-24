@@ -14,4 +14,13 @@ protocol AnimatedFigureDelegate: class {
 
 protocol AnimatedFigure: UIView {
     func operation(forPhase phase: AnimationPhase) -> PhaseOperation
+    func initialState()
+}
+
+extension AnimatedFigure {
+    func initialState() {
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            self?.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }
+    }
 }
