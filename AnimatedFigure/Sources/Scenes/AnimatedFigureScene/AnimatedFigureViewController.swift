@@ -122,28 +122,24 @@ class AnimatedFigureViewController: ViewController {
     }
     
     private func startBreathe() {
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] timer in
-            self?.model.updateTotalTime()
-            
-            guard let remainingTime = self?.model.totalPhasesTime else { return }
-            if remainingTime == 0 {
-                timer.invalidate()
-                self?.remainingTimeLabel.isHidden = true
-            } else {
-                self?.remainingTimeLabel.text = "Remaining\n" + remainingTime.timeString
-            }
-        })
         operationManager
             .onCompletion { [weak self] in
                 self?.animatedFigureView?.initialState()
                 self?.phaseInfoLabel?.text = "TAP TO\nBREATHE"
+                self?.remainingTimeLabel.isHidden = true
             }
             .start()
     }
+    
 }
 
 extension AnimatedFigureViewController: AnimatedFigureDelegate {
-    func animatedFigure(didUpdatePhase phase: AnimationPhaseType, withRemainingTime remainingTime: Int) {
+    func updatePhaseCounter(forPhase phase: AnimationPhaseType, withRemainingTime remainingTime: Int) {
         phaseInfoLabel?.text = phase.rawValue.uppercased() + "\n" + remainingTime.timeString
+    }
+    
+    func updateMainCounter() {
+        model.updateTotalTime()
+        remainingTimeLabel.text = "Remaining\n" + model.totalPhasesTime.timeString
     }
 }

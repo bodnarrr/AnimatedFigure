@@ -29,4 +29,9 @@
     "duration": 8,
     "color": "#FFFFFF"
   },
+  {
+    "type": "inhale",
+    "duration": 3,
+    "color": "#000000"
+  },
 ]

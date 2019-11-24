@@ -27,7 +27,7 @@ class AnimatedSquare: UIView, AnimatedFigure {
             
             self.backgroundColor = phase.color
             self.phaseTime = Int(phase.duration)
-            self.delegate?.animatedFigure(didUpdatePhase: phase.type, withRemainingTime: self.phaseTime)
+            self.delegate?.updatePhaseCounter(forPhase: phase.type, withRemainingTime: self.phaseTime)
             
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] (timer) in
                 guard let self = self else {
@@ -36,7 +36,8 @@ class AnimatedSquare: UIView, AnimatedFigure {
                 }
                 
                 self.phaseTime -= 1
-                self.delegate?.animatedFigure(didUpdatePhase: phase.type, withRemainingTime: self.phaseTime)
+                self.delegate?.updatePhaseCounter(forPhase: phase.type, withRemainingTime: self.phaseTime)
+                self.delegate?.updateMainCounter()
                 if self.phaseTime == 0 {
                     timer.invalidate()
                 }

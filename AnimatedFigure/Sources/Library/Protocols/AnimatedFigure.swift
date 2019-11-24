@@ -9,7 +9,8 @@
 import UIKit
 
 protocol AnimatedFigureDelegate: class {
-    func animatedFigure(didUpdatePhase phase: AnimationPhaseType, withRemainingTime remainingTime: Int)
+    func updatePhaseCounter(forPhase phase: AnimationPhaseType, withRemainingTime remainingTime: Int)
+    func updateMainCounter()
 }
 
 protocol AnimatedFigure: UIView {
