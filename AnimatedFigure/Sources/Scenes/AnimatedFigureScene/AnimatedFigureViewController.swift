@@ -146,6 +146,7 @@ class AnimatedFigureViewController: ViewController {
         activityIndicator.stopAnimating()
         phaseInfoLabel?.isHidden = false
         phaseInfoLabel?.text = "TAP TO\nBREATHE"
+        phaseInfoLabel?.textColor = .black
         animatedFigureView?.isHidden = false
     }
     
@@ -165,8 +166,9 @@ class AnimatedFigureViewController: ViewController {
 }
 
 extension AnimatedFigureViewController: AnimatedFigureDelegate {
-    func updatePhaseCounter(forPhase phase: AnimationPhaseType, withRemainingTime remainingTime: Int) {
+    func updatePhaseCounter(forPhase phase: AnimationPhaseType, withRemainingTime remainingTime: Int, color: UIColor) {
         phaseInfoLabel?.text = phase.rawValue.uppercased() + "\n" + remainingTime.timeString
+        phaseInfoLabel?.textColor = color
     }
     
     func updateMainCounter() {

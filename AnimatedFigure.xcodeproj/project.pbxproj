@@ -27,6 +27,7 @@
 		B54AC9D4238AE06900705DCD /* Phases.json in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9D3238AE06900705DCD /* Phases.json */; };
 		B54AC9D6238AE09E00705DCD /* FilePhasesDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54AC9D5238AE09E00705DCD /* FilePhasesDataLoader.swift */; };
 		B54AC9D7238AE4FC00705DCD /* Phases.json in Resources */ = {isa = PBXBuildFile; fileRef = B54AC9D3238AE06900705DCD /* Phases.json */; };
+		B5C68547238BD80A00069197 /* UIColor+ContrastingColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C68546238BD80A00069197 /* UIColor+ContrastingColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		B54AC9D1238AC8E700705DCD /* PhaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhaseOperation.swift; sourceTree = "<group>"; };
 		B54AC9D3238AE06900705DCD /* Phases.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Phases.json; sourceTree = "<group>"; };
 		B54AC9D5238AE09E00705DCD /* FilePhasesDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePhasesDataLoader.swift; sourceTree = "<group>"; };
+		B5C68546238BD80A00069197 /* UIColor+ContrastingColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ContrastingColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 			children = (
 				B54AC9C223893AAD00705DCD /* UIColor+HEX.swift */,
 				B54AC9C82389556400705DCD /* Int+TimeString.swift */,
+				B5C68546238BD80A00069197 /* UIColor+ContrastingColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				B533391823887DDD000FB928 /* ViewController.swift in Sources */,
 				B54AC9D02389B77D00705DCD /* HoldOperation.swift in Sources */,
 				B54AC9D6238AE09E00705DCD /* FilePhasesDataLoader.swift in Sources */,
+				B5C68547238BD80A00069197 /* UIColor+ContrastingColor.swift in Sources */,
 				B53338F823887ABA000FB928 /* AppDelegate.swift in Sources */,
 				B54AC9CE2389AA6700705DCD /* AnimationOperation.swift in Sources */,
 				B54AC9C72389401100705DCD /* AnimatedSquare.swift in Sources */,
