@@ -21,10 +21,15 @@ class AnimatedFigureModel {
     }
     
     // MARK: - Public methods
-    func loadAnimationPhases(withCompletionHandled completionHandler: @escaping () -> Void) {
-        phasesDataLoader.loadAnimationPhases { [weak self] (phases) in
-            self?.animationPhases = phases
-            completionHandler()
+    func loadAnimationPhases(withCompletionHandled completionHandler: @escaping () -> Void, errorHandler: @escaping (String) -> Void) {
+        phasesDataLoader.loadAnimationPhases { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                errorHandler(error.errorMessage)
+            case .success(let phases):
+                self?.animationPhases = phases
+                completionHandler()
+            }
         }
     }
     

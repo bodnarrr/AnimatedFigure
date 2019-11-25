@@ -28,6 +28,7 @@ class AnimatedFigureViewController: ViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var remainingTimeLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Properties
     let model: AnimatedFigureModel
@@ -53,11 +54,16 @@ class AnimatedFigureViewController: ViewController {
         phaseInfoLabel?.center = view.center
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        loadAnimationData()
+    }
+    
     // MARK: - Prepare
     override func prepare() {
         prepareFigure()
         preparePhaseInfoLabel()
-        prepareAnimationData()
     }
     
     private func prepareFigure() {
@@ -67,6 +73,7 @@ class AnimatedFigureViewController: ViewController {
             height: FigureConstants.maxFigureSize * FigureConstants.defaultFigureRation
         )
         square.backgroundColor = .lightGray
+        square.isHidden = true
         square.delegate = self
         
         let tapRecognizer = UITapGestureRecognizer()
@@ -82,15 +89,19 @@ class AnimatedFigureViewController: ViewController {
         phaseInfoLabel.numberOfLines = 0
         phaseInfoLabel.frame = CGRect(x: 0, y: 0, width: 90, height: 60)
         phaseInfoLabel.textAlignment = .center
+        phaseInfoLabel.isHidden = true
         view.addSubview(phaseInfoLabel)
         
         self.phaseInfoLabel = phaseInfoLabel
     }
     
-    private func prepareAnimationData() {
-        model.loadAnimationPhases { [weak self] in
-            self?.breathe()
-        }
+    private func loadAnimationData() {
+        activityIndicator.startAnimating()
+        model.loadAnimationPhases(withCompletionHandled: { [weak self] in
+            self?.readyToBreathe()
+        }, errorHandler: { [weak self] (message) in
+            self?.showError(withMesage: message)
+        })
     }
     
     // MARK: - Private Methods
@@ -129,6 +140,26 @@ class AnimatedFigureViewController: ViewController {
                 self?.remainingTimeLabel.isHidden = true
             }
             .start()
+    }
+    
+    private func readyToBreathe() {
+        activityIndicator.stopAnimating()
+        phaseInfoLabel?.isHidden = false
+        phaseInfoLabel?.text = "TAP TO\nBREATHE"
+        animatedFigureView?.isHidden = false
+    }
+    
+    private func showError(withMesage message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let reloadAction = UIAlertAction(title: "Reload", style: .default) { [weak self] _ in
+            self?.loadAnimationData()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+        
+        [reloadAction, cancelAction].forEach {alert.addAction($0) }
+        
+        activityIndicator.stopAnimating()
+        present(alert, animated: true)
     }
     
 }

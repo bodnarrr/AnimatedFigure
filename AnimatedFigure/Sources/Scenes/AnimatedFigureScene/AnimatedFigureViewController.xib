@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AnimatedFigureViewController" customModule="AnimatedFigure" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="UZn-s8-lWc" id="RSF-ll-zby"/>
                 <outlet property="remainingTimeLabel" destination="297-5H-AeU" id="MlO-Me-lwk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,10 +29,15 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="UZn-s8-lWc">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="UZn-s8-lWc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="5GE-7O-d9S"/>
                 <constraint firstItem="297-5H-AeU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="SHT-Q0-njr"/>
+                <constraint firstItem="UZn-s8-lWc" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="V2q-D3-lzp"/>
                 <constraint firstItem="297-5H-AeU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="pkK-8X-nvg"/>
                 <constraint firstAttribute="bottom" secondItem="297-5H-AeU" secondAttribute="bottom" constant="50" id="qwb-tg-a5R"/>
                 <constraint firstAttribute="trailing" secondItem="297-5H-AeU" secondAttribute="trailing" constant="30" id="xEo-bK-kES"/>
@@ -39,16 +45,16 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="xEo-bK-kES"/>
                     <exclude reference="SHT-Q0-njr"/>
                     <exclude reference="pkK-8X-nvg"/>
                     <exclude reference="qwb-tg-a5R"/>
+                    <exclude reference="xEo-bK-kES"/>
                 </mask>
             </variation>
             <variation key="heightClass=compact">
                 <mask key="constraints">
-                    <include reference="xEo-bK-kES"/>
                     <include reference="pkK-8X-nvg"/>
+                    <include reference="xEo-bK-kES"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular">
