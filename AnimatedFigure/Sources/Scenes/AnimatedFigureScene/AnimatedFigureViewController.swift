@@ -20,7 +20,7 @@ fileprivate enum FigureConstants {
         
         return size
     }()
-    static let defaultFigureRation: CGFloat = 0.75
+    static let defaultFigureRatio: CGFloat = 0.75
 }
 
 // MARK: - Controller
@@ -69,8 +69,8 @@ class AnimatedFigureViewController: ViewController {
     private func prepareFigure() {
         let square = AnimatedSquare()
         square.frame = CGRect(x: 0, y: 0,
-            width: FigureConstants.maxFigureSize * FigureConstants.defaultFigureRation,
-            height: FigureConstants.maxFigureSize * FigureConstants.defaultFigureRation
+            width: FigureConstants.maxFigureSize * FigureConstants.defaultFigureRatio,
+            height: FigureConstants.maxFigureSize * FigureConstants.defaultFigureRatio
         )
         square.backgroundColor = .lightGray
         square.isHidden = true
@@ -136,8 +136,7 @@ class AnimatedFigureViewController: ViewController {
         operationManager
             .onCompletion { [weak self] in
                 self?.animatedFigureView?.initialState()
-                self?.phaseInfoLabel?.text = "TAP TO\nBREATHE"
-                self?.remainingTimeLabel.isHidden = true
+                self?.readyToBreathe()
             }
             .start()
     }
@@ -148,6 +147,7 @@ class AnimatedFigureViewController: ViewController {
         phaseInfoLabel?.text = "TAP TO\nBREATHE"
         phaseInfoLabel?.textColor = .black
         animatedFigureView?.isHidden = false
+        remainingTimeLabel.isHidden = true
     }
     
     private func showError(withMesage message: String) {
