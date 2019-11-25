@@ -8,31 +8,22 @@
 
 import UIKit
 
-class AnimationOperation: PhaseOperation {
+class AnimationOperation: BasePhaseOperation {
     
     // MARK: - Properties
-    private var completed: () -> Void = { }
-    private let onStart: () -> Void
     private let animation: () -> Void
-    private let duration: TimeInterval
     
     // MARK: - Init
     init(startWith: @escaping () -> Void, animation: @escaping () -> Void, duration: TimeInterval) {
-        self.onStart = startWith
         self.animation = animation
-        self.duration = duration
+        
+        super.init(startWith: startWith, duration: duration)
     }
     
     // MARK: - Public Methods
-    @discardableResult
-    func onCompleted(_ completed: @escaping () -> Void) -> Self {
-        self.completed = completed
-        
-        return self
-    }
-    
-    func execute() {
+    override func execute() {
         onStart()
+        
         UIView.animate(withDuration: duration, animations: { [weak self] in
             self?.animation()
         }, completion: { _ in
