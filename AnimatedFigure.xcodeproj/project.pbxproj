@@ -183,8 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				B54AC9C223893AAD00705DCD /* UIColor+HEX.swift */,
-				B54AC9C82389556400705DCD /* Int+TimeString.swift */,
 				B5C68546238BD80A00069197 /* UIColor+ContrastingColor.swift */,
+				B54AC9C82389556400705DCD /* Int+TimeString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
