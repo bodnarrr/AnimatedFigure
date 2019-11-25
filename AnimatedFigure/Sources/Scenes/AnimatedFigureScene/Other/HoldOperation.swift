@@ -17,7 +17,5 @@ class HoldOperation: BasePhaseOperation {
         DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
             self.completed()
         }
-    }
-    
-    
+    }  
 }

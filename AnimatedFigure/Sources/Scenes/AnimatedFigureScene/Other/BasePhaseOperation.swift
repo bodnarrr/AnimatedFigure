@@ -31,7 +31,5 @@ class BasePhaseOperation: PhaseOperation {
     
     open func execute() {
         fatalError("execute() method must be implemented.")
-    }
-    
-    
+    } 
 }

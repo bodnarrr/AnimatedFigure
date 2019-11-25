@@ -14,6 +14,7 @@ fileprivate enum SquareConstants {
     static let exhaleRatio: CGFloat = 50 / 75
 }
 
+// MARK: - AnimatedSquare
 class AnimatedSquare: UIView, AnimatedFigure {
     
     // MARK: - Properties
@@ -22,27 +23,7 @@ class AnimatedSquare: UIView, AnimatedFigure {
     
     // MARK: - AnimatedFigure
     func operation(forPhase phase: AnimationPhase) -> PhaseOperation {
-        let onStart: () -> Void = { [weak self] in
-            guard let self = self else { return }
-            
-            self.backgroundColor = phase.color
-            self.phaseTime = Int(phase.duration)
-            self.delegate?.updatePhaseCounter(forPhase: phase.type, withRemainingTime: self.phaseTime, color: phase.color.contrastingColor)
-            
-            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] (timer) in
-                guard let self = self else {
-                    timer.invalidate()
-                    return
-                }
-                
-                self.phaseTime -= 1
-                self.delegate?.updatePhaseCounter(forPhase: phase.type, withRemainingTime: self.phaseTime, color: phase.color.contrastingColor)
-                self.delegate?.updateMainCounter()
-                if self.phaseTime == 0 {
-                    timer.invalidate()
-                }
-            }
-        }
+        let onStart = prepareOnStart(phase)
         
         let phaseOperation: PhaseOperation
         
@@ -64,4 +45,28 @@ class AnimatedSquare: UIView, AnimatedFigure {
         return phaseOperation
     }
     
+    // MARK: - Private Methods
+    private func prepareOnStart(_ phase: AnimationPhase) -> () -> Void {
+        return { [weak self] in
+            guard let self = self else { return }
+            
+            self.backgroundColor = phase.color
+            self.phaseTime = Int(phase.duration)
+            self.delegate?.updatePhaseCounter(forPhase: phase.type, withRemainingTime: self.phaseTime, color: phase.color.contrastingColor)
+            
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] (timer) in
+                guard let self = self else {
+                    timer.invalidate()
+                    return
+                }
+                
+                self.phaseTime -= 1
+                self.delegate?.updatePhaseCounter(forPhase: phase.type, withRemainingTime: self.phaseTime, color: phase.color.contrastingColor)
+                self.delegate?.updateMainCounter()
+                if self.phaseTime == 0 {
+                    timer.invalidate()
+                }
+            }
+        }
+    }
 }

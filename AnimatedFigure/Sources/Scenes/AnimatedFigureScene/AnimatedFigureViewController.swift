@@ -162,7 +162,6 @@ class AnimatedFigureViewController: ViewController {
         activityIndicator.stopAnimating()
         present(alert, animated: true)
     }
-    
 }
 
 extension AnimatedFigureViewController: AnimatedFigureDelegate {

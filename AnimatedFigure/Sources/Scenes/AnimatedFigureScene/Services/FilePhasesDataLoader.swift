@@ -9,6 +9,8 @@
 import UIKit
 
 class FilePhasesDataLoader: PhasesDataLoader {
+    
+    // MARK: - Public Methods
     func loadAnimationPhases(withCompletionHandler completionHandler: @escaping (Result<[AnimationPhase], DataLoadingError>) -> Void) {
         guard let path = Bundle.main.path(forResource: "Phases", ofType: "json") else {
             completionHandler(.failure(.dataError("No Phases.json file found in project")))
@@ -36,5 +38,4 @@ class FilePhasesDataLoader: PhasesDataLoader {
         
         completionHandler(.success(phases))
     }
-    
 }
